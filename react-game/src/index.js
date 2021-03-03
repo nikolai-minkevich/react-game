@@ -8,7 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
   <React.StrictMode>
     <Helmet>
-      <title>2048</title>
+      <title>X-O-X</title>
     </Helmet>
     <App />
   </React.StrictMode>,
