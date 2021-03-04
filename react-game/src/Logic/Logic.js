@@ -32,7 +32,7 @@ export function checkWin(cells) {
   }
   diagonalSum = cells[2][0] + cells[1][1] + cells[0][2];
   if (Math.abs(diagonalSum) === 3) {
-    selectedCells = [[0,0], [1,1], [2,2]];
+    selectedCells = [[2,0], [1,1], [0,2]];
     return { type: "diagonal",  winner: diagonalSum / 3, selectedCells: selectedCells };
   }
 
