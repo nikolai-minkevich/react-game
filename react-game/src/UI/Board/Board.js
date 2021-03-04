@@ -8,7 +8,7 @@ class Board extends React.PureComponent {
     onClick(event);
   }
   render() {
-    const { cells, isWin } = this.props;
+    const { cells } = this.props;
     return (
       <>
         <div className={s.board}>

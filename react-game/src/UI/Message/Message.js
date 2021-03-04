@@ -4,7 +4,7 @@ import s from "./style.module.css";
 
 class Message extends React.PureComponent {
   render() {
-    const { children } = this.props.children;
+    const { children } = this.props;
     return <div className={s.message}>{children}</div>;
   }
 }

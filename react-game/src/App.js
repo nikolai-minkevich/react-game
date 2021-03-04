@@ -46,10 +46,25 @@ class App extends React.PureComponent {
   }
   render() {
     const { cells, nextTurn, isWin } = this.state;
+
+    let message = null;
+    if (isWin !== false) {
+      const { type, selectedCells, winner } = isWin;
+      if (type === "draw") {
+        message = <Message>Draw!</Message>;
+      } else {
+        if (winner > 0) {
+          message = <Message>Crosses win!</Message>;
+        } else {
+          message = <Message>Noughts win!</Message>;
+        }
+      }
+    }
+
     return (
       <>
         <div className={s.App}></div>
-        {isWin ? <Message /> : ""}
+        {message}
         <Layout>
           {/* New Game, Score */}
           <Board cells={cells} onClick={this.handleBoardClick.bind(this)} />
