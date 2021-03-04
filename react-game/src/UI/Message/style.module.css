@@ -1,0 +1,15 @@
+.message {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.win {
+  background-color: rgb(104, 161, 12);
+}
+
+.fail {
+  background-color: rgb(212, 44, 44);
+}

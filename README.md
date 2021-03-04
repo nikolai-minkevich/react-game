@@ -1,1 +1,2 @@
-# react-game
+#react-game
+    console.log(this.props);
