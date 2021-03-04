@@ -3,6 +3,7 @@ import s from "./App.css";
 import Layout from "./UI/Layout";
 import Board from "./UI/Board";
 import Footer from "./UI/Footer";
+import { checkWin } from "./Logic/Logic.js";
 
 class App extends React.PureComponent {
   state = this.getNewGame();
@@ -10,7 +11,7 @@ class App extends React.PureComponent {
   getNewGame() {
     return {
       cells: new Array(3).fill(new Array(3).fill(null)),
-      nextTurn: true, // true - X, false - O
+      nextTurn: 1, // 1 - X, -1 - O
       //mode
       //stats
     };
@@ -19,18 +20,25 @@ class App extends React.PureComponent {
   handleBoardClick(event) {
     let { x, y } = event.target.dataset;
     let { nextTurn } = this.state;
+    let newNextTurn = nextTurn;
     this.setState((state) => {
       let newCells = state.cells.map((cellsRow, indexRow) =>
         cellsRow.map((cell, indexCell) => {
           if (indexRow === parseInt(x) && indexCell === parseInt(y) && cell === null) {
-            nextTurn = !nextTurn;
+            newNextTurn = nextTurn * -1;
             return nextTurn;
           } else {
             return cell;
           }
         })
       );
-      return { cells: newCells, nextTurn: nextTurn };
+      if (newNextTurn !== nextTurn) {
+        const isWin = checkWin(newCells)
+        if (isWin!==false) {
+          console.log(isWin);
+        }
+      }
+      return { cells: newCells, nextTurn: newNextTurn };
     });
   }
   render() {

@@ -5,7 +5,6 @@ import s from "./style.module.css";
 class Board extends React.PureComponent {
  
   handleCellClick(event) {
-    console.log("Click"+event.target.dataset.x +event.target.dataset.y);
     this.props.onClick(event)
   }
   render() {
