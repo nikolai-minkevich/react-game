@@ -3,7 +3,8 @@ import s from "./style.module.css";
 
 class Button extends React.PureComponent{
   render(){
-    return 'Button'
+    const { onClick,children } = this.props;
+    return <div className={s.button} onClick={onClick}>{children}</div>
   }
 }
 

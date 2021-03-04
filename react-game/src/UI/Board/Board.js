@@ -8,7 +8,7 @@ class Board extends React.PureComponent {
     onClick(event);
   }
   render() {
-    const { cells } = this.props;
+    const { cells, selectedCells = [] } = this.props;
     return (
       <>
         <div className={s.board}>
@@ -16,9 +16,18 @@ class Board extends React.PureComponent {
             return (
               <>
                 <div className={s.row}>
-                  {cellsRow.map((cell, indexCell) => (
-                    <Cell value={cell} onClick={this.handleCellClick.bind(this)} x={indexRow} y={indexCell} />
-                  ))}
+                  {cellsRow.map((cell, indexCell) => {
+                    let selected = false;
+                    if (selectedCells.length > 0) {
+                      for (let i = 0; i < selectedCells.length; i++) {
+                        if (selectedCells[i][0] == indexRow && selectedCells[i][1] == indexCell) {
+                          selected = true;
+                        }
+                      }
+                    }
+
+                    return <Cell value={cell} onClick={this.handleCellClick.bind(this)} x={indexRow} y={indexCell} selected={selected} />;
+                  })}
                 </div>
               </>
             );

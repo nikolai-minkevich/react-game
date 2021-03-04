@@ -9,7 +9,7 @@ export function checkWin(cells) {
       selectedCells.push([i, j]);
     }
     if (Math.abs(rowSum) === 3) {
-      return { type: "row", index: i, winner: rowSum / 3, selectedCells: selectedCells };
+      return { type: "row",  winner: rowSum / 3, selectedCells: selectedCells };
     }
   }
   // check column
@@ -21,19 +21,19 @@ export function checkWin(cells) {
       selectedCells.push([j, i]);
     }
     if (Math.abs(columnSum) === 3) {
-      return { type: "column", index: i, winner: columnSum / 3, selectedCells: selectedCells };
+      return { type: "column", winner: columnSum / 3, selectedCells: selectedCells };
     }
   }
   // check diagonal
   let diagonalSum = cells[0][0] + cells[1][1] + cells[2][2];
   if (Math.abs(diagonalSum) === 3) {
-    selectedCells = [cells[0][0], cells[1][1], cells[2][2]];
-    return { type: "diagonal", index: 0, winner: diagonalSum / 3, selectedCells: selectedCells };
+    selectedCells = [[0,0], [1,1], [2,2]];
+    return { type: "diagonal",  winner: diagonalSum / 3, selectedCells: selectedCells };
   }
   diagonalSum = cells[2][0] + cells[1][1] + cells[0][2];
   if (Math.abs(diagonalSum) === 3) {
-    selectedCells = [cells[0][0], cells[1][1], cells[2][2]];
-    return { type: "diagonal", index: 1, winner: diagonalSum / 3, selectedCells: selectedCells };
+    selectedCells = [[0,0], [1,1], [2,2]];
+    return { type: "diagonal",  winner: diagonalSum / 3, selectedCells: selectedCells };
   }
 
   if (checkDraw(cells)) {

@@ -13,3 +13,7 @@
   background-color: rgb(180, 180, 180);
   transition: background-color 100ms linear;
 }
+
+.selected, .selected:hover{
+  background-color: rgb(91, 204, 91);
+}

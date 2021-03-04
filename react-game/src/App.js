@@ -5,6 +5,7 @@ import Board from "./UI/Board";
 import Footer from "./UI/Footer";
 import Message from "./UI/Message";
 import { checkWin } from "./Logic/Logic.js";
+import Button from "./UI/Button";
 
 class App extends React.PureComponent {
   state = this.getNewGame();
@@ -44,12 +45,18 @@ class App extends React.PureComponent {
       });
     }
   }
+
+  handleRestartClick(event) {
+    console.log("Restart");
+    this.setState(() => {
+      return this.getNewGame();
+    });
+  }
   render() {
     const { cells, nextTurn, isWin } = this.state;
-
+    const { type, selectedCells, winner } = isWin;
     let message = null;
     if (isWin !== false) {
-      const { type, selectedCells, winner } = isWin;
       if (type === "draw") {
         message = <Message>Draw!</Message>;
       } else {
@@ -64,12 +71,14 @@ class App extends React.PureComponent {
     return (
       <>
         <div className={s.App}></div>
-        {message}
+
         <Layout>
           {/* New Game, Score */}
-          <Board cells={cells} onClick={this.handleBoardClick.bind(this)} />
+          <Board cells={cells} onClick={this.handleBoardClick.bind(this)} selectedCells={selectedCells} />
           <div className="stat">
-            <div className="nextTurn">Next turn: {nextTurn ? "X" : "O"}</div>
+            {message}
+            <div className="nextTurn">Next turn: {nextTurn > 0 ? "X" : "O"}</div>
+            <Button onClick={this.handleRestartClick.bind(this)}>Restart</Button>
           </div>
         </Layout>
         <Footer />
