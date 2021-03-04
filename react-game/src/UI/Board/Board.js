@@ -1,23 +1,25 @@
 import React from "react";
+import Cell from "../Cell";
 import s from "./style.module.css";
 
 class Board extends React.PureComponent {
-  static defaultProps = {
-    cells: new Array(3).fill(new Array(3).fill(null))
-  };
-
-
+ 
+  handleCellClick(event) {
+    console.log("Click"+event.target.dataset.x +event.target.dataset.y);
+    this.props.onClick(event)
+  }
   render() {
     const { cells } = this.props;
+
     return (
       <>
         <div className={s.board}>
-          {cells.map((cellsRow) => {
+          {cells.map((cellsRow, indexRow) => {
             return (
               <>
                 <div className={s.row}>
-                  {cellsRow.map((cell) => (
-                    <div class={s.cell}>{cell || ""}</div>
+                  {cellsRow.map((cell,indexCell) => (
+                    <Cell value={cell} onClick={this.handleCellClick.bind(this)} x={indexRow} y={indexCell}/>
                   ))}
                 </div>
               </>

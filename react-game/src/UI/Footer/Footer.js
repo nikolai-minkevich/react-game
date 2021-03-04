@@ -7,10 +7,11 @@ class Footer extends React.PureComponent {
     return (
       <footer className={s.footer}>
         <div className={s.container}>
-          <a href="https://github.com/nikolai-minkevich">Minkevich Nikolai</a>
+          <span><a href="https://github.com/nikolai-minkevich">Minkevich Nikolai</a>, 2021</span>
           <a href="https://rs.school">
             <img src={logo} alt="RSSchool Logo" />
           </a>
+          
         </div>
       </footer>
     );
