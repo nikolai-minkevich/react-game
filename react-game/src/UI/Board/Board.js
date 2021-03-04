@@ -3,13 +3,12 @@ import Cell from "../Cell";
 import s from "./style.module.css";
 
 class Board extends React.PureComponent {
- 
   handleCellClick(event) {
-    this.props.onClick(event)
+    const { onClick } = this.props;
+    onClick(event);
   }
   render() {
-    const { cells } = this.props;
-
+    const { cells, isWin } = this.props;
     return (
       <>
         <div className={s.board}>
@@ -17,8 +16,8 @@ class Board extends React.PureComponent {
             return (
               <>
                 <div className={s.row}>
-                  {cellsRow.map((cell,indexCell) => (
-                    <Cell value={cell} onClick={this.handleCellClick.bind(this)} x={indexRow} y={indexCell}/>
+                  {cellsRow.map((cell, indexCell) => (
+                    <Cell value={cell} onClick={this.handleCellClick.bind(this)} x={indexRow} y={indexCell} />
                   ))}
                 </div>
               </>

@@ -6,7 +6,7 @@ class Cell extends React.PureComponent {
     const { value, onClick, x, y } = this.props;
     return (
       <div className={s.cell} onClick={onClick} data-x={x} data-y={y}>
-        {value==null ? '' : value>0 ? 'X' : 'O'}
+        {value == null ? "" : value > 0 ? "X" : "O"}
       </div>
     );
   }
